@@ -8,6 +8,7 @@ const userRoutes = require('./routes/userRoutes')
 const businessRoutes = require('./routes/businessRoutes')
 
 app.use(express.json())
+app.use(require('cors')())
 
 app.listen(PORT, () => {
 console.log(`Listening on port ${PORT}`)
