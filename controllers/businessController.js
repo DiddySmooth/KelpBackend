@@ -2,6 +2,7 @@ const models = require('../models')
 const axios = require('axios')
 const businessController = {}
 
+
 const businessController = {}
 businessController.getAll = async (req,res) => {
     try {

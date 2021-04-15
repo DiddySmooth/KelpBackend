@@ -11,6 +11,8 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      models.business.belongsTo(models.user)
+      models.business.hasMany(models.review)
     }
   };
   business.init({
