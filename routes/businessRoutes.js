@@ -5,10 +5,7 @@ const businessRoutes = express.Router()
 
 
 businessRoutes.get('/', businessController.getAll)
-businessRoutes.post('/', businessController.getAll)
-
-
-
+businessRoutes.post('/:id', businessController.create)
 
 
 module.exports = businessRoutes
