@@ -8,6 +8,6 @@ userRoutes.post('/login', userController.login)
 
 userRoutes.delete('/:id', userController.delete)
 
-
+userRoutes.put('/:id', userController.update)
 
 module.exports = userRoutes

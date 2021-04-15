@@ -47,6 +47,21 @@ userController.delete = async(req,res) => {
     }
 }
 
+userController.update = async(req,res) => {
+    try {
+        let user = await models.user.findOne({
+            where: {
+                id: req.params.id
+            }
+         }) 
+        let updates = await user.update(req.body)
+        res.json({updates})
+
+    } catch (error) {
+        res.json({error})
+    }
+}
+
 
 
 module.exports = userController
