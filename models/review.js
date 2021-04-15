@@ -11,8 +11,8 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      // models.review.belongsTo(models.user)
-      // models.review.belongsTo(models.business)
+      models.review.belongsTo(models.user)
+      models.review.belongsTo(models.business)
     }
   };
   review.init({

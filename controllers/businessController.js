@@ -84,4 +84,30 @@ businessController.delete = async(req,res) => {
     }
 }
 
+businessController.review = async (req,res) => {
+    let business = await models.business.findOne({
+        where: {
+            id: req.params.id
+        }
+    })
+
+    let user = await models.user.findOne ({
+        where: {
+            id: req.params.userId
+        }
+    })
+
+    let review = await models.review.create({
+        headline: req.body.headline,
+        content: req.body.content,
+        rating: req.body.rating,
+        userId: user.id,
+        businessId: business.id
+    })
+
+    res.json({business, user, review})
+
+}
+
+
 module.exports = businessController
