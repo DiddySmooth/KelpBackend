@@ -14,6 +14,20 @@ businessController.getAll = async (req,res) => {
     }
 }
 
+businessController.getOne = async(req,res) => {
+    try {
+        let business = await models.business.findOne({
+            where: {
+                id: req.params.id
+            }
+        })
+
+        res.json({business})
+    } catch (error) {
+        res.json({error})
+    }
+}
+
 businessController.create = async (req,res) => {
     try {
 
@@ -35,6 +49,36 @@ businessController.create = async (req,res) => {
         user.addBusiness(newBusiness)
       
         res.json({user, newBusiness}) 
+    } catch (error) {
+        res.json({error})
+    }
+}
+
+businessController.update = async (req,res) => {
+    
+    try {
+        let business = await models.business.findOne({
+            where: {
+                id: req.params.id
+            }
+        })
+        let updates = await business.update(req.body)
+        res.json({updates})
+    } catch (error) {
+        res.json({error})
+    }
+}
+
+businessController.delete = async(req,res) => {
+    try {
+        let business = await models.business.findOne({
+            where: {
+                id: req.params.id
+            }
+        })
+        await business.destroy()
+
+        res.json({ message: 'business deleted'}) 
     } catch (error) {
         res.json({error})
     }
