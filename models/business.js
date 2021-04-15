@@ -13,15 +13,16 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       models.business.belongsTo(models.user)
       models.business.hasMany(models.review)
-    }
+      models.business.belongsToMany(models.user, {through: 'review'})
   };
+}
   business.init({
     name: DataTypes.STRING,
     address: DataTypes.STRING,
     description: DataTypes.STRING,
     type: DataTypes.STRING,
     img: DataTypes.STRING,
-    ownerId: DataTypes.INTEGER
+    userId: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'business',
