@@ -109,5 +109,19 @@ businessController.review = async (req,res) => {
 
 }
 
+businessController.findAll = async (req,res) => {
+    try {
+
+    let reviews = await models.review.findAll({
+        where: {
+        businessId: req.params.id
+        }
+    })
+    res.json({reviews})
+} catch (error) {
+    res.json({error})
+    }
+}
+
 
 module.exports = businessController
